@@ -2,25 +2,32 @@ import React, { useState } from 'react'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { UpdateStudent } from './StudentSlice'
+import { DeleteStudent } from './StudentSlice'
 
 
 const EditStudent = () => {
   const IndexValue = useLocation().state.IndexValue;
-  const stdData = useSelector((state)=>state.Student[IndexValue])
+  const Student = useSelector((state)=>state.Student)
+  const stdData = Student[IndexValue]
   const dispatch = useDispatch()
   const Navigator = useNavigate()
   const [Name,setName] = useState(stdData.Name)
   const [Age,setAge] = useState(stdData.Age)
   const [Course,setCourse] = useState(stdData.Course)
   const [Batch,setBatch] = useState(stdData.Batch)
-  const handleSubmit = (e)=>{
-    e.preventDefault();
+  const handleSubmit = ()=>{
     dispatch(UpdateStudent({
       IndexValue,
       Name,
       Age,
       Course,
       Batch
+    }))
+    Navigator(-1)
+  }
+  const handleDelete = ()=>{
+    dispatch(DeleteStudent({
+      IndexValue
     }))
     Navigator(-1)
   }
@@ -47,6 +54,7 @@ const EditStudent = () => {
       </div>
       <div className='footer'>
           <button type='button' className='btn' onClick={()=>Navigator(-1)}>Cancel</button>
+          <button type='button' className='btn' onClick={handleDelete}>Delete</button>
           <button type='button' onClick={handleSubmit}>Update</button>
         </div>
     </form>

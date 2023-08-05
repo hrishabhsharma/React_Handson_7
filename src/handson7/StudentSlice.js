@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import EditStudent from "./EditStudent";
 
 const Student=[
     {Name : 'John',   Age: 24,  Course : 'MERN',  Batch : 'October',  },
@@ -24,11 +23,14 @@ const StudentSlice = createSlice({
             existingStudent.Age = Age
             existingStudent.Course = Course
             existingStudent.Batch = Batch
-
+        },
+        DeleteStudent : (state,action)=>{
+            const {IndexValue} = action.payload
+            state.splice(IndexValue,1)
         }
 
     }
 })
 
 export default StudentSlice.reducer;
-export const {AddStudent,UpdateStudent} = StudentSlice.actions
+export const {AddStudent,UpdateStudent,DeleteStudent} = StudentSlice.actions
