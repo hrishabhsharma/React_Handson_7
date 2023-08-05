@@ -29,7 +29,7 @@ const EditStudent = () => {
     dispatch(DeleteStudent({
       IndexValue
     }))
-    Navigator(-1)
+    Navigator('/Student')
   }
   return (
     <>
