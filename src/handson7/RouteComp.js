@@ -3,8 +3,9 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import Student from './Student'
 import Contactus from './Contactus'
-import './style.css'
 import AddNewStudent from './AddNewStudent'
+import EditStudent from './EditStudent'
+import './style.css'
 
 const RouteComp = () => {
   return (
@@ -20,6 +21,7 @@ const RouteComp = () => {
       <Route path='/Student' element={<Student/>}/>
       <Route path='/Contactus' element={<Contactus/>} />
       <Route path='/AddStudent' element={<AddNewStudent/>} />
+      <Route path='/Student/:id' element={<EditStudent/>}/>
     </Routes>
     </BrowserRouter>
     </>

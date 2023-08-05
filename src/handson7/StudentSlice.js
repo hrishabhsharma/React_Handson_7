@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import EditStudent from "./EditStudent";
 
 const Student=[
     {Name : 'John',   Age: 24,  Course : 'MERN',  Batch : 'October',  },
@@ -15,10 +16,19 @@ const StudentSlice = createSlice({
     reducers:{
         AddStudent : (state,action)=>{
             state.push(action.payload);
+        },
+        UpdateStudent: (state,action)=>{
+            const {IndexValue,Name,Age,Course,Batch} = action.payload;
+            const existingStudent = state.find((item,index)=>index===IndexValue)
+            existingStudent.Name = Name
+            existingStudent.Age = Age
+            existingStudent.Course = Course
+            existingStudent.Batch = Batch
+
         }
 
     }
 })
 
 export default StudentSlice.reducer;
-export const {AddStudent} = StudentSlice.actions
+export const {AddStudent,UpdateStudent} = StudentSlice.actions

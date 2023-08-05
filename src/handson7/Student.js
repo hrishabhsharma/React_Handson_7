@@ -10,7 +10,7 @@ const Student = () => {
         <main>
             <div id='Caption'>
                 <h1>Students Details</h1>
-                <p id='AddNew' onClick={()=>Navigator('/AddStudent')}>Add New Student</p>
+                <button id='AddNew' onClick={()=>Navigator('/AddStudent') }>Add New Student</button>
             </div>
             <table>
                 <tbody>
@@ -29,8 +29,7 @@ const Student = () => {
                                 <td>{item.Age}</td>
                                 <td>{item.Course}</td>
                                 <td>{item.Batch}</td>
-                                <td><NavLink to='#'>Edit</NavLink></td>
-                                
+                                <td><NavLink to={"/Student/"+index} state={{IndexValue:index}}>Edit</NavLink></td>
                             </tr>
                         )
                     })
